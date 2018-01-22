@@ -57,6 +57,11 @@ ENTRYPOINT ["/tini", "--"]
 # Default MQTT connection settings
 ENV MQTT_SERVER=localhost:1883 MQTT_USERNAME=admin MQTT_PASSWORD=123
 
+VOLUME ["/data"]
+
+RUN rm -rf data \
+ && ln -s /data
+
 # Startup
 CMD ["/usr/bin/supervisord"]
 
